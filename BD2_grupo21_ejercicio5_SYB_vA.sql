@@ -924,4 +924,586 @@ alter table VENDER
    add constraint FK_VENDER_VENDER2_EMPLEADO foreign key (EMPLEADO_VENDEDORID)
       references EMPLEADO_VENDEDOR (EMPLEADO_VENDEDORID)
 go
+/* Crear la vista VISTA_ADQUISICION_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
 
+CREATE VIEW VISTA_ADQUISICION_Edit
+AS
+    SELECT
+    PRODUCTOID,
+    CLIENTEID
+
+    FROM ADQUISICION
+
+/* Crear la vista VISTA_ADQUISICION_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_ADQUISICION_View
+AS
+    SELECT *
+    FROM ADQUISICION
+    WHERE digitador = user_name()
+
+--------------------------------------------------------------------------------------------------------
+/* Crear la vista VISTA_CARGO_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_CARGO_Edit
+AS
+    SELECT
+    CARGOID,
+    DEPARTAMENTOID,
+    CARGO_NOMBRE,
+    SALARIOMENSUAL
+
+
+    FROM CARGO
+
+/* Crear la vista VISTA_CARGO_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_CARGO_View
+AS
+    SELECT *
+    FROM CARGO
+    WHERE digitador = user_name()
+
+
+------------------------------------------------------------------------------------------------
+
+/* Crear la vista VISTA_CIUDAD_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_CIUDAD_Edit
+AS
+    SELECT
+    CIUDADID,
+    SUCURSALID,
+    CIUDAD_NOMBRE
+
+
+    FROM CIUDAD
+
+/* Crear la vista VISTA_CIUDAD_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_CIUDAD_View
+AS
+    SELECT *
+    FROM CIUDAD
+    WHERE digitador = user_name()
+
+
+
+--------------------------------------------------------------------------------------------
+
+/* Crear la vista VISTA_CLIENTE_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_CLIENTE_Edit
+AS
+    SELECT
+    CLIENTEID,
+    GERENTE_CLIENTEID,
+    SUCURSALID,
+    EMPLEADO_VENDEDORID,
+    CLIENTE_NOMBRE,
+    CLIENTE_NIT,
+    CLIENTE_DIRECCION,
+    CLIENTE_CORREO,
+    CLIENTE_TELEFONOMOVIL
+
+
+    FROM CLIENTE
+
+/* Crear la vista VISTA_CLIENTE_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_CLIENTE_View
+AS
+    SELECT *
+    FROM CLIENTE
+    WHERE digitador = user_name()
+
+
+----------------------------------------------------------------------------------------------
+
+/* Crear la vista VISTA_DEPARTAMENTOE_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_DEPARTAMENTO_Edit
+AS
+    SELECT
+    DEPARTAMENTOID,
+    DEPARTAMENTO_NOMBRE
+    FROM DEPARTAMENTO
+
+/* Crear la vista VISTA_DEPARTAMENTO_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_DEPARTAMENTO_View
+AS
+    SELECT *
+    FROM DEPARTAMENTO
+    WHERE digitador = user_name()
+
+
+------------------------------------------------------------------------------------------------
+
+
+/* Crear la vista VISTA_EMPLEADO_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_EMPLEADO_Edit
+AS
+    SELECT
+    EMPLEADOID,
+    CARGOID,
+    SUCURSALID,
+    EMPLEADO_NOMBRE,
+    EMPLEADO_APELLIDO,
+    EMPLEADO_TELEFONOMOVIL,
+    EMPLEADO_DIRECCION,
+    EMPLEADO_GENERO,
+    EMPLEADO_CORREO,
+    EMPLEADO_FECHAINGRESO
+
+
+    FROM EMPLEADO
+
+/* Crear la vista VISTA_EMPLEADO_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_EMPLEADO_View
+AS
+    SELECT *
+    FROM EMPLEADO
+    WHERE digitador = user_name()
+
+
+------------------------------------------------------------------------------------------------
+
+/* Crear la vista VISTA_EMPLEADO_VENDEDOR_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_EMPLEADO_VENDEDOR_Edit
+AS
+    SELECT
+    EMPLEADO_VENDEDORID,
+    SUCURSALID,
+    EMPLEADOVENDEDOR_NOMBRE,
+    EMPLEADOVENDEDOR_APELLIDO,
+    EMPLEADOVENDEDOR_TELEFONOMOVIL,
+    EMPLEADOVENDEDOR_DIRECCION,
+    EMPLEADOVENDEDOR_GENERO,
+    EMPLEADOVENDEDOR_CORREO,
+    EMPLEADOVENDEDOR_FECHAINGRESO,
+    EMPLEADOVENDEDOR_SALARIOMENSUAL,
+    COMISION
+
+
+    FROM EMPLEADO_VENDEDOR
+
+/* Crear la vista VISTA_EMPLEADO_VENDEDOR_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_EMPLEADO_VENDEDOR_View
+AS
+    SELECT *
+    FROM EMPLEADO_VENDEDOR
+    WHERE digitador = user_name()
+
+
+--------------------------------------------------------------------------------------
+
+
+
+/* Crear la vista VISTA_GERENTE_CLIENTE_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_GERENTE_CLIENTE_Edit
+AS
+    SELECT
+    GERENTE_CLIENTEID,
+    CLIENTEID,
+    GERENTECLIENTE_NOMBRE,
+    GERENTECLIENTE_DOCUMENTO,
+    GERENTECLIENTE_TELEFONOMOVIL
+
+    FROM GERENTE_CLIENTE
+
+/* Crear la vista VISTA_GERENTE_CLIENTE_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_GERENTE_CLIENTE_View
+AS
+    SELECT *
+    FROM GERENTE_CLIENTE
+    WHERE digitador = user_name()
+
+
+
+------------------------------------------------------------------------------------------
+
+
+
+
+/* Crear la vista VISTA_GERENTE_PROVEEDOR_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_GERENTE_PROVEEDOR_Edit
+AS
+    SELECT
+    GERENTE_PROVEEDORID,
+    PROVEEDORID,
+    GERENTEPROVEEDOR_NOMBRE,
+    GERENTEPROVEEDOR_DOCUMENTO,
+    GERENTEPROVEEDOR_TELEFONO
+    
+
+    FROM GERENTE_PROVEEDOR
+
+/* Crear la vista VISTA_GERENTE_PROVEEDOR_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_GERENTE_PROVEEDOR_View
+AS
+    SELECT *
+    FROM GERENTE_PROVEEDOR
+    WHERE digitador = user_name()
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+/* Crear la vista VISTA_PRODUCTO_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_PRODUCTO_Edit
+AS
+    SELECT
+    PRODUCTOID,
+    PROVEEDORID,
+    PRODUCTO_NOMBRE,
+    PRODUCTO_PRECIOCOMPRA,
+    PRODUCTO_PRECIOVENTA,
+    PRODUCTO_FECHAADQUISICION
+    
+
+    FROM PRODUCTO
+
+/* Crear la vista VISTA_PRODUCTO_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_PRODUCTO_View
+AS
+    SELECT *
+    FROM PRODUCTO
+    WHERE digitador = user_name()
+
+
+
+
+
+----------------------------------------------------------------------------------------
+
+
+
+/* Crear la vista VISTA_PROVEEDOR_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_PROVEEDOR_Edit
+AS
+    SELECT
+    PROVEEDORID,
+    GERENTE_PROVEEDORID,
+    SUCURSALID,
+    PROVEEDOR_NOMBRE,
+    PROVEEDOR_NIT,
+    PROVEEDOR_NUMEROCENTROLLAMADAS,
+    PROVEEDOR_DIRECCION
+    
+
+    FROM PROVEEDOR
+
+/* Crear la vista VISTA_PROVEEDOR_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_PROVEEDOR_View
+AS
+    SELECT *
+    FROM PROVEEDOR
+    WHERE digitador = user_name()
+
+
+-------------------------------------------------------------------------------
+
+
+
+/* Crear la vista VISTA_SUCURSAL_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_SUCURSAL_Edit
+AS
+    SELECT
+    SUCURSALID,
+    CIUDADID,
+    SUCURSAL_NOMBRE
+
+    FROM SUCURSAL
+
+/* Crear la vista VISTA_SUCURSAL_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_SUCURSAL_View
+AS
+    SELECT *
+    FROM SUCURSAL
+    WHERE digitador = user_name()
+
+
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+/* Crear la vista VISTA_VENDER_Edit, que muestre las columnas que usted definiÃ³ en
+la tabla reciÃ©n creada y que excluya las columnas digitador y fecha */
+
+CREATE VIEW VISTA_VENDER_Edit
+AS
+    SELECT
+    PRODUCTOID,
+    EMPLEADO_VENDEDORID
+
+    FROM VENDER
+
+/* Crear la vista VISTA_VENDER_View, que muestre todas las columnas de la tabla
+reciÃ©n creada y que incluya un filtro por usuario */
+
+CREATE VIEW VISTA_VENDER_View
+AS
+    SELECT *
+    FROM VENDER
+    WHERE digitador = user_name()
+
+
+-----------------------------------------------------------
+/* Permisos */
+
+GRANT SELECT ON VISTA_ADQUISICION_View TO negarzonc
+GRANT INSERT ON VISTA_ADQUISICION_Edit TO negarzonc
+GRANT SELECT ON VISTA_ADQUISICION_Edit TO negarzonc
+
+GRANT SELECT ON VISTA_ADQUISICION_View TO dsilvamo
+GRANT INSERT ON VISTA_ADQUISICION_Edit TO dsilvamo
+GRANT SELECT ON VISTA_ADQUISICION_Edit TO dsilvamo
+
+GRANT SELECT ON VISTA_ADQUISICION_View TO maarojasga 
+GRANT INSERT ON VISTA_ADQUISICION_Edit TO maarojasga
+GRANT SELECT ON VISTA_ADQUISICION_Edit TO maarojasga
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_CARGO_View TO negarzonc
+GRANT INSERT ON VISTA_CARGO_Edit TO negarzonc
+GRANT SELECT ON VISTA_CARGO_Edit TO negarzonc
+GRANT SELECT ON VISTA_CARGO_View TO dsilvamo
+GRANT INSERT ON VISTA_CARGO_Edit TO dsilvamo
+GRANT SELECT ON VISTA_CARGO_Edit TO dsilvamo
+GRANT SELECT ON VISTA_CARGO_View TO maarojasga
+GRANT INSERT ON VISTA_CARGO_Edit TO maarojasga
+GRANT SELECT ON VISTA_CARGO_Edit TO maarojasga
+
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_CIUDAD_View TO negarzonc
+GRANT INSERT ON VISTA_CIUDAD_Edit TO negarzonc
+GRANT SELECT ON VISTA_CIUDAD_Edit TO negarzonc
+GRANT SELECT ON VISTA_CIUDAD_View TO dsilvamo
+GRANT INSERT ON VISTA_CIUDAD_Edit TO dsilvamo
+GRANT SELECT ON VISTA_CIUDAD_Edit TO dsilvamo
+GRANT SELECT ON VISTA_CIUDAD_View TO maarojasga
+GRANT INSERT ON VISTA_CIUDAD_Edit TO maarojasga
+GRANT SELECT ON VISTA_CIUDAD_Edit TO maarojasga
+
+
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_CLIENTE_View TO negarzonc
+GRANT INSERT ON VISTA_CLIENTE_Edit TO negarzonc
+GRANT SELECT ON VISTA_CLIENTE_Edit TO negarzonc
+GRANT SELECT ON VISTA_CLIENTE_View TO dsilvamo
+GRANT INSERT ON VISTA_CLIENTE_Edit TO dsilvamo
+GRANT SELECT ON VISTA_CLIENTE_Edit TO dsilvamo
+GRANT SELECT ON VISTA_CLIENTE_View TO maarojasga
+GRANT INSERT ON VISTA_CLIENTE_Edit TO maarojasga
+GRANT SELECT ON VISTA_CLIENTE_Edit TO maarojasga
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_DEPARTAMENTO_View TO negarzonc
+GRANT INSERT ON VISTA_DEPARTAMENTO_Edit TO negarzonc
+GRANT SELECT ON VISTA_DEPARTAMENTO_Edit TO negarzonc
+GRANT SELECT ON VISTA_DEPARTAMENTO_View TO dsilvamo
+GRANT INSERT ON VISTA_DEPARTAMENTO_Edit TO dsilvamo
+GRANT SELECT ON VISTA_DEPARTAMENTO_Edit TO dsilvamo
+GRANT SELECT ON VISTA_DEPARTAMENTO_View TO maarojasga
+GRANT INSERT ON VISTA_DEPARTAMENTO_Edit TO maarojasga
+GRANT SELECT ON VISTA_DEPARTAMENTO_Edit TO maarojasga
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_EMPLEADO_View TO negarzonc
+GRANT INSERT ON VISTA_EMPLEADO_Edit TO negarzonc
+GRANT SELECT ON VISTA_EMPLEADO_Edit TO negarzonc
+GRANT SELECT ON VISTA_EMPLEADO_View TO dsilvamo
+GRANT INSERT ON VISTA_EMPLEADO_Edit TO dsilvamo
+GRANT SELECT ON VISTA_EMPLEADO_Edit TO dsilvamo
+GRANT SELECT ON VISTA_EMPLEADO_View TO maarojasga
+GRANT INSERT ON VISTA_EMPLEADO_Edit TO maarojasga
+GRANT SELECT ON VISTA_EMPLEADO_Edit TO maarojasga
+
+
+
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_EMPLEADO_VENDEDOR_View TO negarzonc
+GRANT INSERT ON VISTA_EMPLEADO_VENDEDOR_Edit TO negarzonc
+GRANT SELECT ON VISTA_EMPLEADO_VENDEDOR_Edit TO negarzonc
+GRANT SELECT ON VISTA_EMPLEADO_VENDEDOR_View TO dsilvamo
+GRANT INSERT ON VISTA_EMPLEADO_VENDEDOR_Edit TO dsilvamo
+GRANT SELECT ON VISTA_EMPLEADO_VENDEDOR_Edit TO dsilvamo
+GRANT SELECT ON VISTA_EMPLEADO_VENDEDOR_View TO maarojasga
+GRANT INSERT ON VISTA_EMPLEADO_VENDEDOR_Edit TO maarojasga
+GRANT SELECT ON VISTA_EMPLEADO_VENDEDOR_Edit TO maarojasga
+
+
+
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_GERENTE_CLIENTE_View TO negarzonc
+GRANT INSERT ON VISTA_GERENTE_CLIENTE_Edit TO negarzonc
+GRANT SELECT ON VISTA_GERENTE_CLIENTE_Edit TO negarzonc
+GRANT SELECT ON VISTA_GERENTE_CLIENTE_View TO dsilvamo
+GRANT INSERT ON VISTA_GERENTE_CLIENTE_Edit TO dsilvamo
+GRANT SELECT ON VISTA_GERENTE_CLIENTE_Edit TO dsilvamo
+GRANT SELECT ON VISTA_GERENTE_CLIENTE_View TO maarojasga
+GRANT INSERT ON VISTA_GERENTE_CLIENTE_Edit TO maarojasga
+GRANT SELECT ON VISTA_GERENTE_CLIENTE_Edit TO maarojasga
+
+
+
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_GERENTE_PROVEEDOR_View TO negarzonc
+GRANT INSERT ON VISTA_GERENTE_PROVEEDOR_Edit TO negarzonc
+GRANT SELECT ON VISTA_GERENTE_PROVEEDOR_Edit TO negarzonc
+GRANT SELECT ON VISTA_GERENTE_PROVEEDOR_View TO dsilvamo
+GRANT INSERT ON VISTA_GERENTE_PROVEEDOR_Edit TO dsilvamo
+GRANT SELECT ON VISTA_GERENTE_PROVEEDOR_Edit TO dsilvamo
+GRANT SELECT ON VISTA_GERENTE_PROVEEDOR_View TO maarojasga
+GRANT INSERT ON VISTA_GERENTE_PROVEEDOR_Edit TO maarojasga
+GRANT SELECT ON VISTA_GERENTE_PROVEEDOR_Edit TO maarojasga
+
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_PRODUCTO_View TO negarzonc
+GRANT INSERT ON VISTA_PRODUCTO_Edit TO negarzonc
+GRANT SELECT ON VISTA_PRODUCTO_Edit TO negarzonc
+GRANT SELECT ON VISTA_PRODUCTO_View TO dsilvamo
+GRANT INSERT ON VISTA_PRODUCTO_Edit TO dsilvamo
+GRANT SELECT ON VISTA_PRODUCTO_Edit TO dsilvamo
+GRANT SELECT ON VISTA_PRODUCTO_View TO maarojasga
+GRANT INSERT ON VISTA_PRODUCTO_Edit TO maarojasga
+GRANT SELECT ON VISTA_PRODUCTO_Edit TO maarojasga
+
+
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_PROVEEDOR_View TO negarzonc
+GRANT INSERT ON VISTA_PROVEEDOR_Edit TO negarzonc
+GRANT SELECT ON VISTA_PROVEEDOR_Edit TO negarzonc
+GRANT SELECT ON VISTA_PROVEEDOR_View TO dsilvamo
+GRANT INSERT ON VISTA_PROVEEDOR_Edit TO dsilvamo
+GRANT SELECT ON VISTA_PROVEEDOR_Edit TO dsilvamo
+GRANT SELECT ON VISTA_PROVEEDOR_View TO maarojasga
+GRANT INSERT ON VISTA_PROVEEDOR_Edit TO maarojasga
+GRANT SELECT ON VISTA_PROVEEDOR_Edit TO maarojasga
+
+
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_SUCURSAL_View TO negarzonc
+GRANT INSERT ON VISTA_SUCURSAL_Edit TO negarzonc
+GRANT SELECT ON VISTA_SUCURSAL_Edit TO negarzonc
+GRANT SELECT ON VISTA_SUCURSAL_View TO dsilvamo
+GRANT INSERT ON VISTA_SUCURSAL_Edit TO dsilvamo
+GRANT SELECT ON VISTA_SUCURSAL_Edit TO dsilvamo
+GRANT SELECT ON VISTA_SUCURSAL_View TO maarojasga
+GRANT INSERT ON VISTA_SUCURSAL_Edit TO maarojasga
+GRANT SELECT ON VISTA_SUCURSAL_Edit TO maarojasga
+
+/* Permisos */
+
+GRANT SELECT ON VISTA_VENDER_View TO negarzonc
+GRANT INSERT ON VISTA_VENDER_Edit TO negarzonc
+GRANT SELECT ON VISTA_VENDER_Edit TO negarzonc
+GRANT SELECT ON VISTA_VENDER_View TO dsilvamo
+GRANT INSERT ON VISTA_VENDER_Edit TO dsilvamo
+GRANT SELECT ON VISTA_VENDER_Edit TO dsilvamo
+GRANT SELECT ON VISTA_VENDER_View TO maarojasga
+GRANT INSERT ON VISTA_VENDER_Edit TO maarojasga
+GRANT SELECT ON VISTA_VENDER_Edit TO maarojasga
+
+
+
+---------------------------------------------------------------------------------
+
+INSERT INTO dabonilla.VISTA_ADQUISICION_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_CARGO_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_CIUDAD_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_CLIENTE_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_DEPARTAMENTO_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_EMPLEADO_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_EMPLEADO_VENDEDOR_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_GERENTE_CLIENTE_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_GERENTE_PROVEEDOR_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_PRODUCTO_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
+
+INSERT INTO dabonilla.VISTA_VENDER_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)	
+
+INSERT INTO dabonilla.VISTA_SUCURSAL_Edit
+VALUES (valor_1, valor_2, . . . , valor_n)
